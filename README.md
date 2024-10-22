@@ -4,9 +4,13 @@ Ever wanted to stream while using Intiface Central and let your viewers feel wha
 
 Now you can!
 
+## Overview
+
 ![Crimsonland with QRCode Overlay](./img/demo.png)
 
-The premise is fairly simple. The streamer uses an OBS Browser Overlay that generates a QRCode. This QRCode is then shown somewhere in their video stream. Meanwhile, viewers use one of the multiple capture methods provided to scrape the stream and interpret the QRCode, allowing them to follow the haptic action as it happens, in sync with the video stream.
+The premise is fairly simple. The streamer uses an OBS Browser Overlay that generates a QRCode based on commands sent to a simulated device in Intiface Central. This QRCode is then shown somewhere in their video stream. 
+
+Meanwhile, viewers use one of the multiple capture methods provided to scrape the stream and interpret the QRCode, allowing them to follow the haptic action as it happens, in sync with the video stream.
 
 The project is consists of 2 parts:
 
@@ -19,6 +23,8 @@ The project is consists of 2 parts:
     - This system can be used with no modifications to the browser
   - **\[Coming Soon\]** A userscript for use with Greasemonkey/[Tampermonkey](https://www.tampermonkey.net/)/etc 
   - **\[Coming Soon\]** A browser extension for firefox/chrome
+
+**No downloads are required to start using this system, for either the streamer or viewer.** The Browser Widget and WebRTC based screen capture system are both hosted via this github repo. The only reason this repo needs to be cloned is for development or forking purposes, but we'll be doing out best to provide customization capabilities.
 
 ## Streamer Instructions
 
