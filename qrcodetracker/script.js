@@ -1,41 +1,3 @@
-
-/*
-[
-  {
-    "type": 64,
-    "typeName": "ZBAR_QRCODE",
-    "data": {
-      "0": 48,
-      "1": 48,
-      "2": 48,
-      "3": 48
-    },
-    "points": [
-      {
-        "x": 12,
-        "y": 12
-      },
-      {
-        "x": 12,
-        "y": 211
-      },
-      {
-        "x": 202,
-        "y": 210
-      },
-      {
-        "x": 203,
-        "y": 12
-      }
-    ],
-    "orientation": 0,
-    "time": 2894327427,
-    "cacheCount": 0,
-    "quality": 1,
-    "rawData": "0000"
-  }
-]*/
-
 let videoElem;
 let canvas;
 let context;
@@ -53,7 +15,7 @@ window.addEventListener("load", async () => {
   console.log(videoElem);
   canvas = document.querySelector("canvas");
   context = canvas.getContext("2d");
-  /*
+  
   try {
     const connector = new buttplug.ButtplugBrowserWebsocketClientConnector("ws://127.0.0.1:12345/buttplug");
     await client.connect(connector);
@@ -83,7 +45,7 @@ window.addEventListener("load", async () => {
     console.log(e);
     return;
   }
-    */
+    
 });
 
 const displayMediaOptions = {
@@ -126,7 +88,6 @@ const startCapture = (displayMediaOptions) => {
 const updateImageData = () => {
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.drawImage(video, pointBoundary[0][0] - 10, pointBoundary[0][1] - 10, pointBoundary[1][0] - pointBoundary[0][0] + 20, pointBoundary[1][1] - pointBoundary[0][1] + 20, 0, 0, pointBoundary[1][0] - pointBoundary[0][0] + 20, pointBoundary[1][1] - pointBoundary[0][1] + 20);
-  //requestAnimationFrame(updateImageData);
   setTimeout(updateImageData, 50);
 }
 
@@ -160,7 +121,7 @@ const findQRCode = async () => {
 
     }
     let result = symbols[0].decode();
-    let speedVal = result.substring(2).parseInt();
+    let speedVal = parseInt(result.substring(2));
     if (lastSpeedVal != speedVal) {
       for (var device of client.devices) {
         device.vibrate(speedVal / 99);
