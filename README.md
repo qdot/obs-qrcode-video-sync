@@ -26,7 +26,40 @@ The project is consists of 2 parts:
 
 **No downloads are required to start using this system, for either the streamer or viewer.** The Browser Widget and WebRTC based screen capture system are both hosted via this github repo. The only reason this repo needs to be cloned is for development or forking purposes, but we'll be doing out best to provide customization capabilities.
 
+## Example Usage
+
+- Streamer installs the [Intiface Game Haptics Router](http://intiface.com/ghr) (aka GHR), which can
+  intercept and reroute rumble commands to [Intiface Central Devices](https://intiface.com/central).
+- Streamer uses this OBS Browser Widget, which acts as an Intiface Device and shows the latest speed
+  command as a QRCode.
+- Streamer plays game on stream w/ GHR, with QRCode widget showing on their stream
+- Viewer (with [Intiface Central](https://intiface.com/central) installed) brings up stream on
+  Twitch/Fansly/Joystick/etc...
+- Viewer uses one of the provided methods to track the QRCode on the stream
+- Viewer's QRCode tracker communicates with their copy of Intiface Central, cause hardware to react
+  whenever the QRCode updates on the stream. 
+
 ## Streamer Instructions
+
+- Install [Intiface Central](https://intiface.com/central)
+- In Intiface Central, set up a Websocket Device
+  - Under the `App Modes` tab
+    - Set `Mode` to `Engine` 
+    - Turn `Show Advanced/Experimental Settings` on
+    - Turn `Device Websocket Server` (under `Advanced Device Managers`) on
+  - Under the `Devices` tab, scroll down to `Websocket Devices (Advanced)`. Add a device of protocol
+    type `lovense` with name `LVS-Test`. 
+- Start the engine by hitting the large play button on the top bar
+- This step should only be done AFTER starting the engine. Open a web browser on the same machine
+  that Intiface is running on, and go to https://qdot.github.io/obs-qrcode-video-sync/obsdevice/
+  In Intiface Central, a new device should show as connected on the devices tab. Moving the slider
+  should update the graph on the webpage. If this doesn't work, check the browser console to see
+  if any errors were printed.
+- Close the web browser tab with the obs-qrcode-video-sync page in it, make sure Intiface Central
+  says no device is connected.
+- Add a new browser source to OBS, with https://qdot.github.io/obs-qrcode-video-sync/obsdevice/ as
+  the URL
+- Place the QRCode on a top layer so it is not occluded
 
 ## Viewer Instructions
 
